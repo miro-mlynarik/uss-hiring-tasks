@@ -26,3 +26,5 @@ Task is defined vaguely on purpose. It is on you to decide which libraries you w
 #### What is not important
 * Prediction error - do not spend much time on prediction itself, predicting bitcoin price is very hard task, if we could solve it we would be millionares - solution like "average from last three minute prices" is completely OK. You are free to use whichever method you want for prediction but this won't be important factor
 * Solution performance - the API does not need to be able to return the answer fast nor it needn't to be able to process requests from many callers at once
+* Resource hunger - it does not need to consume small amount of RAM nor it does not need to use cpu time effectively
+* Data storage - this does not need to be anything sophisticated, file or sqlite database is OK
