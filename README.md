@@ -9,7 +9,7 @@ The main goal of this task is to create API with predictions of bitcoin price. T
 Predictions must be based on all available data so when I call price prediction API on 15:30 prediction should use all relevant data available even the newest one (15:29). Live updates of bitcoin prices should be drawn from some free public API (f.e. https://www.coindesk.com/coindesk-api).
 
 #### Bonus task
-Create simple web UI to plot bitcoin prices used by prediction with the prediction itself.
+Create simple web UI or create some other way how to visualize bitcoin prices used by prediction with the prediction itself.
 
 ### Some notes
 
