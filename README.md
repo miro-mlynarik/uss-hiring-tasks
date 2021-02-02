@@ -28,3 +28,11 @@ Task is defined vaguely on purpose. It is on you to decide which libraries you w
 * Solution performance - the API does not need to be able to return the answer fast nor it needn't to be able to process requests from many callers at once
 * Resource hunger - it does not need to consume small amount of RAM nor it does not need to use cpu time effectively
 * Data storage - this does not need to be anything sophisticated, file or sqlite database is OK
+
+If you cannot solve whole problem or you do not have enough time to solve whole problem, try to solve what you can and just write short comments on what would you do next to get to the full solution. We will go over that through discussion.
+
+#### What are the next steps ?
+1. Create your own repository on github or any other public code hosting platform and start coding
+1. Try to solve it as it was your task in a job - use git properly
+1. When finished (partially or fully) send us link for the git repo with solution
+1. Together we will schledule meeting when we will discuss the solution
