@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "uss-hiring-tasks"
+version = "0.1.0"
+description = ""
+authors = ["Miroslav Mlynárik <miroslav.mlynarik@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pandas = "^1.3.2"
+fastapi = "^0.68.0"
+uvicorn = "^0.15.0"
+requests = "^2.26.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.4"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
