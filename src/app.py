@@ -1,7 +1,11 @@
+import pandas as pd
 from fastapi import FastAPI
+from fastapi.responses import HTMLResponse
 from pydantic import BaseModel, Field
 
 from src.predictor import CryptoPricePredictor
+
+pd.set_option("display.max_rows", 500)
 
 
 class RequestBody(BaseModel):
@@ -13,10 +17,11 @@ class RequestBody(BaseModel):
 app = FastAPI()
 
 
-@app.post('/predictions',
-          summary="BTC/USD price prediction endpoint",
+# Custom endpoint for programmatic purposes with customizable params
+@app.post('/predictions/custom',
+          summary="BTC/USD price prediction endpoint with custom parameters",
           tags=["BTC Price Prediction"])
-def predict_btcusd(req: RequestBody):
+def predict_btcusd_custom(req: RequestBody):
     model = CryptoPricePredictor(
         ccy_pair="BTCUSD",
         lookback_hrs=req.lookback_hrs,
@@ -26,9 +31,9 @@ def predict_btcusd(req: RequestBody):
 
     response = {
         'requested_at': model.historical_quotes.requested_at[0],
-        'ccy_pair': req.ccy_pair,
-        'lookback_hrs': req.lookback_hrs,
-        'frequency_mins': req.frequency_mins,
+        'ccy_pair': model.ccy_pair,
+        'lookback_hrs': model.lookback_hrs,
+        'frequency_mins': model.frequency_mins,
         'prediction': model.predict()
     }
 
@@ -36,3 +41,22 @@ def predict_btcusd(req: RequestBody):
         f.write(str(response) + '\n')
 
     return response
+
+
+# Default endpoint for visulisation purposes with fixed params
+@app.get('/predictions/default',
+         summary="BTC/USD price prediction endpoint with default parameters",
+         tags=["BTC Price Prediction"],
+         response_class=HTMLResponse)
+def predict_btcusd_default():
+    model = CryptoPricePredictor(ccy_pair="BTCUSD", lookback_hrs=1, frequency_mins=1)
+    model.get_historical_quotes()
+
+    response = {
+        'requested_at': model.historical_quotes.requested_at[0],
+        'ccy_pair': model.ccy_pair,
+        'lookback_hrs': model.lookback_hrs,
+        'frequency_mins': model.frequency_mins,
+        'prediction': model.predict()
+    }
+    return str(response) + "\n\n" + str(model.historical_quotes)
