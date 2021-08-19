@@ -51,9 +51,3 @@ class CryptoPricePredictor:
     def predict(self) -> float:
         """Calculate CCY pair price prediction."""
         return round(float(self.historical_quotes['quote'].mean()), 4)
-
-
-if __name__ == '__main__':
-    model = CryptoPricePredictor(ccy_pair="BTCUSD", frequency_mins=5, lookback_hrs=6)
-    model.get_historical_quotes()
-    print(model.historical_quotes, model.predict())
